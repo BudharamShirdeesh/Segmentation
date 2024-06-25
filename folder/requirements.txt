@@ -1,0 +1,6 @@
+tensorflow
+beautifulsoup4
+indic-transliteration
+langchain
+openai
+langchain-openai
