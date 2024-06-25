@@ -2,6 +2,12 @@ Briefly describe the purpose and scope of the project.
 
 ## Directory Structure
 
+folder----Segmentation
+-'main.py'
+-translation_generation.py'
+-dictionary.csv
+
+
 - **data/**: Directory for storing data files and models.
   - **code/**: Contains Python scripts for processing and analyzing data.
     - `apply.py`: Script for applying processing functions.
