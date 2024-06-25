@@ -2,7 +2,7 @@ Briefly describe the purpose and scope of the project.
 
 ## Directory Structure
 
-folder----Segmentation
+folder----Segmentation/
 -'main.py'
 -translation_generation.py'
 -dictionary.csv
