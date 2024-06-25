@@ -24,7 +24,7 @@ import data_loader
 from configuration import config  # Import config from configuration
 
 # Define the CSV file path
-csv_file = 'finaloutput1.csv'
+csv_file = 'dictionary.csv'
 
 # Define lists of special characters
 svaras = ['\uA8E1', '\uA8E2', '\uA8E3', '\uA8E4', '\uA8E5', '\uA8E6', '\uA8E7', '\uA8E8', '\uA8E9', '\uA8E0', '\uA8EA', '\uA8EB', '\uA8EC', '\uA8EE', '\uA8EF', '\u030D', '\u0951', '\u0952', '\u0953', '\u0954', '\u0945']
@@ -154,7 +154,12 @@ def ss(sentence):
     meanings_output = []
     
     for meaning in meanings_list:
-        csv_meaning = next((row['meaning'] for row in csv_data if row['form'] == meaning['pada']), None)
+        # Find the corresponding row in CSV for the current meaning['pada']
+        csv_meaning = None
+        for row in csv_data:
+            if 'word' in row and row['word'] == meaning['pada']:
+                csv_meaning = row['meanings']
+                break
         
         # Construct the output format
         meanings_text = {
@@ -168,9 +173,10 @@ def ss(sentence):
     
     return segmented_words1_str, segmented_words2_str, list(analyzed_words.values()), final_segmented_words_split, meanings_output
 
+
 # Example usage
 if __name__ == "__main__":
-    input_sentence = "dhrtarastra uvaca dharmaksetre kuruksetre samaveta yuyutsavah mamakah pandavas caiva kim akurvata Samjaya  "
+    input_sentence = "a̱gnimī̍l̤e pu̱rohi̍taṃ ya̱jñasya̍ de̱vamṛ̱tvija̍m . hotā̍raṃ ratna̱dhāta̍mam .."
     segmented_words1, segmented_words2, analyzed_words, final_segmented_words, meanings_output = ss(input_sentence)
     
     # Print the results in the desired format
